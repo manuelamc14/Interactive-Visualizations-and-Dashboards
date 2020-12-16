@@ -5,7 +5,17 @@ d3.json(samplesData).then((data) => {
    console.log(data)
 });
 
-// Drop Down Menu
+////// INIT FUNCTION //////
+
+function init() {
+    buildPlot("940")
+    demographicTable("940")
+};
+
+init();
+
+////// DROP DOWN MENU //////
+
 menu = d3.select("#selDataset")
 function dropDownMenu () {
     d3.json(samplesData).then((data) => {
@@ -19,6 +29,7 @@ function dropDownMenu () {
 };
 dropDownMenu()
 
+//
 d3.selectAll("select").on("change", function(){
     element = d3.select(this);
     idInput = element.property("value");
@@ -28,10 +39,15 @@ d3.selectAll("select").on("change", function(){
     demographicTable(idInput);
 
 });
-// Bar chart
+
+////// BAR & BUBBLE CHARTS //////
 
 function buildPlot (idInput){
     // idInput = '941'
+    var barTag = d3.select("#bar");
+    barTag.html("");
+
+
     d3.json(samplesData).then((data) => {
     // Store the id in an array
     var names = data.names;
@@ -50,7 +66,7 @@ function buildPlot (idInput){
     // Use otu_labels as the hovertext for the chart.
     var otuLabels = (samples.otu_labels).slice(0,10);
 
-    // Build Bar Plot
+    // Build Bar chart
 
     var trace1 = {
         x: sampleValues,
@@ -67,9 +83,34 @@ function buildPlot (idInput){
     };
 
     Plotly.newPlot("bar", data, layout);
+
+
+    // Build Buble Chart
+
+    var bubbleTag = d3.select("#bubble");
+    bubbleTag.html("");
+
+    var trace2 = {
+        type: "scatter",
+        mode: "markers",
+        x: otuIds,
+        y: sampleValues,
+        marker: {
+            color: otuIds
+        }
+    };
+
+    var dataBubbleChart = [trace2];
+
+    Plotly.plot("bubble", dataBubbleChart);
+    
+
+
     })    
-}
+};
 buildPlot()
+
+////// DEMOGRAPHIC INFO //////
 
 function demographicTable (idInput){
     //idInput = '943'
