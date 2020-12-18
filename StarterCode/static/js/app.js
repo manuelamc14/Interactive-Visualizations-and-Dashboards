@@ -40,13 +40,12 @@ d3.selectAll("select").on("change", function(){
 
 });
 
+
 ////// BAR & BUBBLE CHARTS //////
 
 function buildPlot (idInput){
-    // idInput = '941'
     var barTag = d3.select("#bar");
     barTag.html("");
-
 
     d3.json(samplesData).then((data) => {
     // Store the id in an array
@@ -55,7 +54,7 @@ function buildPlot (idInput){
     // Find the index for the input ID
     idIndex = names.indexOf(idInput);
     console.log(idIndex);
-
+   
     // Find the sample information for the ID
     var samples = data.samples[idIndex];
     // Use sample_values as the values for the bar chart
@@ -73,13 +72,21 @@ function buildPlot (idInput){
         y: otuIdLabels,
         type: "bar",
         orientation: 'h',
-        text: otuLabels
+        text: otuLabels,
+        marker: {
+            color: 'rgb(255,102,102)',
+            opacity: 0.7,
+            line: {
+              color: 'rgb(0,0,0)',
+              width: 1.5
+            }
+          }
     };
 
     var data = [trace1];
 
     var layout = {
-        title: "ID Information"
+        title: "Bacteria Frequency for Top 10 OTU Samples"
     };
 
     Plotly.newPlot("bar", data, layout);
@@ -87,23 +94,31 @@ function buildPlot (idInput){
 
     // Build Buble Chart
 
-    var bubbleTag = d3.select("#bubble");
-    bubbleTag.html("");
+    var sampleValuesAll = (samples.sample_values);
+    // Use otu_ids as the labels for the bar chart.
+    var otuIdsAll = (samples.otu_ids);
+    // Use otu_labels as the hovertext for the chart.
+    var otuLabelsAll = (samples.otu_labels);
 
+    
     var trace2 = {
         type: "scatter",
         mode: "markers",
-        x: otuIds,
-        y: sampleValues,
+        x: otuIdsAll,
+        y: sampleValuesAll,
         marker: {
-            color: otuIds
+            color: otuIdsAll,
+            size: sampleValuesAll
         }
     };
 
     var dataBubbleChart = [trace2];
 
-    Plotly.plot("bubble", dataBubbleChart);
-    
+    var layoutBubbleChart = {
+        title: "All OTU Samples for Test Subject ID"
+    };
+
+    Plotly.newPlot("bubble", dataBubbleChart, layoutBubbleChart);
 
 
     })    
@@ -118,15 +133,14 @@ function demographicTable (idInput){
     
     // Store the id in an array
     var names = data.names;
-    console.log(names);
 
     // Find the index for the input ID
     idIndex = names.indexOf(idInput);
     // Store the id in an array
-    var metadata = data.metadata[idIndex];
-    var metadataEntries = Object.entries(metadata)
-    console.log(metadataEntries);
-
+    var metadataInfo = data.metadata[idIndex];
+    console.log(metadataInfo);
+    var metadataEntries = Object.entries(metadataInfo);
+    console.log(metadataEntries)
     // Get a reference for the panel body
     var pbody = d3.select("#sample-metadata");
     pbody.html("");
@@ -134,8 +148,8 @@ function demographicTable (idInput){
      metadataEntries.forEach((entry) => { 
          var line = pbody.append("h6");
          line.text(`${entry[0]}: ${entry[1]}`)
-         console.log(`${entry[0]}: ${entry[1]}`)
         });
     });    
 };
-demographicTable()
+demographicTable();
+
