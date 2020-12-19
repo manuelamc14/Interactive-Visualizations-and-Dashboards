@@ -12,7 +12,7 @@ function init() {
     demographicTable("940")
 };
 
-init();
+
 
 ////// DROP DOWN MENU //////
 
@@ -123,7 +123,7 @@ function buildPlot (idInput){
 
     })    
 };
-buildPlot()
+
 
 ////// DEMOGRAPHIC INFO //////
 
@@ -151,5 +151,6 @@ function demographicTable (idInput){
         });
     });    
 };
-demographicTable();
 
+
+init();
