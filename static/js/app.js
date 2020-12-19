@@ -1,6 +1,6 @@
 // Read the file samples.json
 
-var  samplesData = "../samples.json"
+var  samplesData = "./samples.json"
 d3.json(samplesData).then((data) => {
    console.log(data)
 });
