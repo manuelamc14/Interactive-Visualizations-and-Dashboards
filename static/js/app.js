@@ -86,7 +86,7 @@ function buildPlot (idInput){
     var data = [trace1];
 
     var layout = {
-        title: "Bacteria Frequency for Top 10 OTU Samples"
+        title: "Bacteria Frequency (Top 10 OTU Samples)"
     };
 
     Plotly.newPlot("bar", data, layout);
@@ -115,7 +115,7 @@ function buildPlot (idInput){
     var dataBubbleChart = [trace2];
 
     var layoutBubbleChart = {
-        title: "All OTU Samples for Test Subject ID"
+        title: "OTU Samples for Test Subject ID (All Samples)"
     };
 
     Plotly.newPlot("bubble", dataBubbleChart, layoutBubbleChart);
