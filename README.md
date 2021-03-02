@@ -1,5 +1,12 @@
 # Interactive-Visualizations-and-Dashboards
 
+## Dependencies
+
+* D3
+* Plotly
+
+## Description
+
 This project aims to build an interactive dashboard to explore the Belly Button Biodiversity dataset, which catalogs the microbes that colonize human navels. (Source: http://robdunnlab.com/projects/belly-button-biodiversity/)
 
 The dataset reveals that a small handful of microbial species (also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people, while the rest were relatively rare.
@@ -20,6 +27,11 @@ The dashboard has three charts:
     - otu_ids were used as the marker colors.
     - otu_labels were used as text values.
 
+## Images
+
+![ScreenShot](https://github.com/manuelamc14/Interactive-Visualizations-and-Dashboards/blob/main/Images/Dashboard1.png)
+
+![ScreenShot](https://github.com/manuelamc14/Interactive-Visualizations-and-Dashboards/blob/main/Images/Dashboard2.png)
 
 
 
