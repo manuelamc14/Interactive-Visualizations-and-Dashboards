@@ -29,7 +29,7 @@ The dashboard has three charts:
 
 ## Images
 
-![ScreenShot](https://github.com/manuelamc14/Interactive-Visualizations-and-Dashboards/blob/main/Images/Dashboard1.png)
+![ScreenShot](https://github.com/manuelamc14/Interactive-Visualizations-and-Dashboards/blob/main/Images/Dashboard.png)
 
 ![ScreenShot](https://github.com/manuelamc14/Interactive-Visualizations-and-Dashboards/blob/main/Images/Dashboard2.png)
 
